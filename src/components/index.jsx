@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../assets/Logo.png";
 import logoName from "../assets/Cowala Software.png";
 import Container from "./styles";
+import MaskedInput from "./maskInput";
 
 const Home = () => {
   const [user, setUser] = useState({
@@ -96,12 +97,13 @@ const Home = () => {
           <div>
             <label htmlFor="cell_number">Celular</label>
 
-            <input
-              type="tel"
+            <MaskedInput
               name="cell_number"
               id="cell_number"
               className="input_cell_number"
               placeholder="(11) 98651-6000"
+              value={user.phone}
+              mask="(99) 99999-9999"
               onChange={handlePhone}
             />
           </div>
@@ -110,14 +112,14 @@ const Home = () => {
         <fieldset className="ip">
           <label htmlFor="ip">Meu IP</label>
           <div>
-            <input
-              type="text"
+            <MaskedInput
               name="ip"
               id="ip"
               className="input_ip"
               placeholder="171.881.210.231"
               value={user.ip}
               onChange={setUser}
+              mask="999.999.999.999"
               readOnly={true}
             />
 
